@@ -1,4 +1,4 @@
-target=sum01
+target=sum01 sum02
 
 all:$(target)
 
