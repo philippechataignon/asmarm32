@@ -1,3 +1,4 @@
-sum??
-cmp??
-hello??
+*
+!*.s
+!.gitignore
+!Makefile
