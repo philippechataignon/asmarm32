@@ -1,30 +1,21 @@
 /* -- hello01.s */
-.data
-
-greeting:
- .asciz "Hello world"
-
-.balign 4
-return: .word 0
+.global puts
+.global main
 
 .text
-
-.global main
 main:
-    ldr r1, address_of_return     /*   r1 ← &address_of_return */
-    str lr, [r1]                  /*   *r1 ← lr */
+            ldr r1,=return          /*   r1 ← &address_of_return */
+            str lr,[r1]             /*   *r1 ← lr */
 
-    ldr r0, address_of_greeting   /* r0 ← &address_of_greeting */
-                                  /* First parameter of puts */
+            ldr r0,=greeting        /* r0 ← &address_of_greeting */
+                                    /* First parameter of puts */
+            bl puts                 /* Call to puts */
+                                    /* lr ← address of next instruction */
+            ldr r1,=return          /* r1 ← &address_of_return */
+            ldr lr,[r1]             /* lr ← *r1 */
+            bx  lr                  /* return from main */
 
-    bl puts                       /* Call to puts */
-                                  /* lr ← address of next instruction */
-
-    ldr r1, address_of_return     /* r1 ← &address_of_return */
-    ldr lr, [r1]                  /* lr ← *r1 */
-    bx lr                         /* return from main */
-address_of_greeting: .word greeting
-address_of_return: .word return
-
-/* External */
-.global puts
+.data
+.balign 4
+greeting:   .asciz "Hello world"
+return:     .word 0
