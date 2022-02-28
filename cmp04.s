@@ -13,4 +13,5 @@ check_loop:
     ble loop         /* branch if r2 <= 22 to the beginning of the loop */
 end:
     mov r0, r1       /* r0 ← r1 */
-    bx lr
+    mov r7,#1
+    svc #0

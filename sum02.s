@@ -10,7 +10,8 @@ main:
     ldr r1,=myvar2      /* r2 ← &myvar2 */
     ldr r1,[r1]         /* r2 ← *r2 */
     add r0,r0,r1        /* r0 ← r1 + r2 */
-    bx lr
+    mov r7,#1
+    svc #0
 
 .data
 .balign 4
