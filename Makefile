@@ -14,7 +14,7 @@ LDFLAGS=-e main
 
 src=$(wildcard *.s)
 obj=$(patsubst %.s,%.o,$(src))
-target=$(patsubst %.s,%,$(src)) hello01
+target=$(patsubst %.s,%,$(src)) $(patsubst %.S, %, $(wildcard *.S))
 
 all:$(target) $(obj)
 
