@@ -5,6 +5,8 @@ CFLAGS=-O2
 ASFLAGS=
 LDFLAGS=-e main
 
+%: %.S
+	$(CC) $(CFLAGS) -o $@ $<
 %.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
 %: %.o
@@ -12,7 +14,7 @@ LDFLAGS=-e main
 
 src=$(wildcard *.s)
 obj=$(patsubst %.s,%.o,$(src))
-target=$(patsubst %.s,%,$(src))
+target=$(patsubst %.s,%,$(src)) hello01
 
 all:$(target) $(obj)
 
