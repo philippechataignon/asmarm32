@@ -4,6 +4,8 @@
 .global printf
 .global main
 
+exit = 1
+
 .text
 main:
             push {lr}
@@ -12,7 +14,10 @@ main:
             bl printf                 /* Call to puts */
                                     /* lr ← address of next instruction */
             pop {lr}                /* lr ← *r1 */
-            bx  lr                  /* return from main */
+            
+            mov r7,#exit
+            mov r0,#0             // return code
+            svc #0
 
 .data
 .balign 4

@@ -15,8 +15,7 @@ LDFLAGS=-e main
 
 src=$(wildcard *.s)
 obj=$(patsubst %.s,%.o,$(src))
-target=$(patsubst %.s,%,$(src)) $(patsubst %.S, %, $(wildcard *.S))
-
+target=$(patsubst %.s,%,$(src)) $(patsubst %.S, %, $(wildcard *.S)) add_main
 
 all:$(target) $(obj) add_main
 add_main: add.o add_main.o
@@ -25,4 +24,4 @@ add_main: add.o add_main.o
 .PHONY: clean
 
 clean:
-	rm -f $(obj) $(target)
+	rm -f $(target) *.o
