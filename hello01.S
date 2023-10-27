@@ -23,3 +23,4 @@ main:
 .data
 .balign 4
 greeting:   .asciz "Hello world!"
+.section	.note.GNU-stack,"",%progbits

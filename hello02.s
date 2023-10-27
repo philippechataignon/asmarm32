@@ -22,3 +22,4 @@ main:
 
 String: .ascii "Hello World\n"
 LenString = . - String
+.section	.note.GNU-stack,"",%progbits
